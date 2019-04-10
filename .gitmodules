@@ -19,9 +19,6 @@
 [submodule ".vim/bundle/nvim-yarp"]
 	path = .vim/bundle/nvim-yarp
 	url = https://github.com/roxma/nvim-yarp
-[submodule ".vim/bundle/dracula-theme"]
-	path = .vim/bundle/dracula-theme
-	url = https://github.com/dracula/dracula-theme
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
@@ -43,3 +40,6 @@
 [submodule ".vim/bundle/SimpylFold"]
 	path = .vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold
+[submodule ".vim/bundle/dracula-theme"]
+	path = .vim/bundle/dracula-theme
+	url = https://github.com/dracula/vim
