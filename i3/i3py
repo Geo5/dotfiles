@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from i3pystatus import Status
+status = Status()
+
+DRACULA_THEME = {
+    "background": "#282a36",
+    "current line": "#44475a",
+    "selection": "#44475a",
+    "foreground": "#f8f8f2",
+    "comment": "#6272a4",
+    "cyan": "#8be9fd",
+    "green": "#50fa7b",
+    "orange": "#ffb86c",
+    "pink": "#ff79c6",
+    "purple": "#bd93f9",
+    "red": "#ff5555",
+    "yellow": "#f1fa8c",
+}
+
+status.register("clock",
+                format=" %H:%M:%S   %a %-d %b KW%V",)
+
+status.register("cpu_usage_graph",
+                format=" {usage}% {cpu_graph}",
+                start_color=DRACULA_THEME["green"],
+                end_color=DRACULA_THEME["red"],
+                graph_style="braille-fill",
+                graph_width=25)
+
+status.register("mem",
+                color=DRACULA_THEME["foreground"],
+                alert_color=DRACULA_THEME["red"],
+                format=" {used_mem}/{avail_mem} GiB",
+                divisor=1024**3)
+
+#status.register("battery",
+#                format="{battery_ident}: [{status} ]{percentage_design:.2f}%",
+#                alert=True,
+#                alert_percentage=15,
+#                status={"DPL":"DPL","CHR":"CHR","DIS":"DIS","FULL":""})
+
+#status.register("temp",
+#                format=" {temp:.0f}°C")
+
+status.register("disk",
+                path="/",
+                format=" {percentage_used}% {total}G")
+
+status.register("backlight",
+                format="💡 {brightness}/{max_brightness}",
+                color=DRACULA_THEME["yellow"])
+
+status.register("pulseaudio",
+                color_muted=DRACULA_THEME["selection"],
+                color_unmuted=DRACULA_THEME["orange"],
+                multi_colors=True,
+                format=" {volume}%")
+
+status.register("window_title",
+                format="{title} [{class_name}]",
+                color=DRACULA_THEME["purple"])
+
+status.run()

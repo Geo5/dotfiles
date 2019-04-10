@@ -1,0 +1,8 @@
+
+[Default Applications]
+application/pdf=mupdf.desktop
+inode/directory=pcmanfm.desktop
+image=feh.desktop
+text=vim.desktop
+text/plain=vim.desktop
+text/x-python=vim.desktop

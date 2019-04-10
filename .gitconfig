@@ -1,0 +1,4 @@
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
+[merge]
+	tool = fugitive
