@@ -33,7 +33,7 @@
 	url = https://github.com/Shougo/deoplete.nvim
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab/blob/master/plugin/supertab.vim
+	url = https://github.com/ervandew/supertab
 [submodule ".vim/bundle/jedi-vim"]
 	path = .vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
