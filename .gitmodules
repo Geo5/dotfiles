@@ -1,45 +1,33 @@
-[submodule ".vim/bundle/FastFold"]
-	path = .vim/bundle/FastFold
-	url = https://github.com/Konfekt/FastFold
-[submodule ".vim/bundle/ale"]
-	path = .vim/bundle/ale
-	url = https://github.com/w0rp/ale
-[submodule ".vim/bundle/vim-fugitive"]
-	path = .vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive
-[submodule ".vim/bundle/vim-hug-neovim-rpc"]
-	path = .vim/bundle/vim-hug-neovim-rpc
-	url = https://github.com/roxma/vim-hug-neovim-rpc
-[submodule ".vim/bundle/vim-latex"]
-	path = .vim/bundle/vim-latex
-	url = https://github.com/karlmoritz/vim-latex
-[submodule ".vim/bundle/vim-airline"]
-	path = .vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule ".vim/bundle/nvim-yarp"]
-	path = .vim/bundle/nvim-yarp
-	url = https://github.com/roxma/nvim-yarp
-[submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = https://github.com/majutsushi/tagbar
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree
-[submodule ".vim/bundle/deoplete.nvim"]
-	path = .vim/bundle/deoplete.nvim
-	url = https://github.com/Shougo/deoplete.nvim
-[submodule ".vim/bundle/supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
-[submodule ".vim/bundle/jedi-vim"]
-	path = .vim/bundle/jedi-vim
-	url = https://github.com/davidhalter/jedi-vim
-[submodule ".vim/bundle/deoplete-jedi"]
-	path = .vim/bundle/deoplete-jedi
-	url = https://github.com/deoplete-plugins/deoplete-jedi
-[submodule ".vim/bundle/SimpylFold"]
-	path = .vim/bundle/SimpylFold
-	url = https://github.com/tmhedberg/SimpylFold
-[submodule ".vim/bundle/dracula-theme"]
-	path = .vim/bundle/dracula-theme
-	url = https://github.com/dracula/vim
+[submodule ".vim/pack/general/start/dracula-theme"]
+	path = .vim/pack/general/start/dracula-theme
+	url = https://github.com/dracula/vim.git
+[submodule ".vim/pack/general/start/SimpylFold"]
+	path = .vim/pack/general/start/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule ".vim/pack/general/start/FastFold"]
+	path = .vim/pack/general/start/FastFold
+	url = https://github.com/Konfekt/FastFold.git
+[submodule ".vim/pack/general/start/ale"]
+	path = .vim/pack/general/start/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/pack/general/start/targets.vim"]
+	path = .vim/pack/general/start/targets.vim
+	url = https://github.com/wellle/targets.vim.git
+[submodule ".vim/pack/general/start/vim-commentary"]
+	path = .vim/pack/general/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule ".vim/pack/general/start/vim-characterize"]
+	path = .vim/pack/general/start/vim-characterize
+	url = https://github.com/tpope/vim-characterize.git
+[submodule ".vim/pack/general/start/nerdtree"]
+	path = .vim/pack/general/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/pack/general/start/surround"]
+	path = .vim/pack/general/start/surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule ".vim/pack/general/start/vimtex"]
+	path = .vim/pack/general/start/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule ".vim/pack/general/start/vim-fugitive"]
+	path = .vim/pack/general/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git

@@ -1,0 +1,194 @@
+
+"colorscheme
+let g:dracula_italic = 0
+let g:dracula_bold = 0
+set termguicolors
+colorscheme dracula
+syntax on
+"Spell laguage
+"TODO: mapping for changing the language
+set spelllang=en_gb
+"TODO: add personal spellfile
+"set spellfile=
+
+filetype plugin indent on
+set encoding=utf-8
+let mapleader=","
+"let maplocalleader="#"
+
+" Status Line 
+hi StatusLineNC ctermbg=242 ctermfg=238 guifg=#BCB8B1 guibg=#1E2028
+hi StatusLine ctermbg=238 guibg=#424450
+hi StatusLineSubtle ctermbg=238 ctermfg=12 guifg=#BCB8B1 guibg=#424450
+set laststatus=2
+
+"Tabline at top
+hi! link TabLine StatusLineNC
+hi! link TabLineSel Wildmenu
+set showtabline=2
+
+"Use system clipboard
+set clipboard=unnamedplus
+"line number
+set number
+"tab-stuff
+set tabstop=8
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set smarttab
+
+set autoindent
+"set showmatch
+let python_highlight_all=1
+set foldmethod=indent
+set foldlevel=99
+"search stuff
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+"allow unsaved buffers to be hidden
+set hidden
+"split opens right
+set splitright
+"show chars
+set list
+set listchars=tab:▸\ ,eol:¬,trail:·
+"highlight the line the cursor is on
+hi clear CursorLine
+"hi! CursorLine guibg=#424450
+set cursorline
+"cursor can move behind last character
+set virtualedit=block,onemore
+"Lighten up the comment colour to be able to see them better
+hi! DraculaComment guifg=#7488C9
+"menu for autocompletion
+set wildmenu
+"visual bell 
+set visualbell
+"automatic saving on buffer changing
+set autowrite
+"read updates from elsewhere automatic
+set autoread
+"disable swapfiles
+set noswapfile
+
+"session management
+set sessionoptions=buffers,help,options,winsize
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"key mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"map 8 and 9 to [ and ] for 1 less keystroke on qwertz layout
+"nnoremap 8 [
+"nnoremap 9 ]
+"open vimrc
+nnoremap <leader>rc :vsplit $MYVIMRC<cr>
+"source vimrc
+nnoremap <leader>sc :source $MYVIMRC<cr>
+"folding
+nnoremap <space> za
+inoremap <C-@> <C-O>za
+"move to the next buffer
+noremap <silent> <leader>l :bnext<CR>
+"move to previous buffer
+noremap <silent> <leader>h :bprevious<CR>
+"open new buffer
+noremap <silent> <leader>N :enew<CR>
+"close current buffer and move to previous
+noremap <silent> <leader>q :bp <BAR> bd #<CR>
+"move to splits
+nnoremap <silent> <C-J> <C-W>j
+nnoremap <silent> <C-K> <C-W>k
+nnoremap <silent> <C-L> <C-W>l
+nnoremap <silent> <C-H> <C-W>h
+inoremap <silent> <C-J> <C-O><C-W>j
+inoremap <silent> <C-K> <C-O><C-W>k
+inoremap <silent> <C-L> <C-O><C-W>l
+inoremap <silent> <C-H> <C-O><C-W>h
+"spelling suggestions for one word on ctrl-s
+nnoremap <C-S> :setlocal spell<CR>z=
+inoremap <C-S> <C-O>:setlocal spell<CR><C-O>z=
+"arrow keys move 5 up in normal mode
+nnoremap <Up> 5<Up>
+nnoremap <Down> 5<Down>
+"clear last search pattern
+nnoremap <leader>c :let @/=""<CR>
+"nnoremap <esc> :noh<return><esc>
+"clear search highlight on entering insert mode
+"autocmd InsertEnter * :noh
+"map Y do yank to the end of the line
+nnoremap Y y$
+"turn on spellchecking for current file
+nnoremap <leader>s :setlocal spell!<CR>
+"Enter in normal mode inserts newline
+nnoremap <cr> i<cr><esc>
+"search results are always centered
+nnoremap n nzz
+nnoremap N Nzz
+"movement keys move by screen lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+"Close help when pressing q
+augroup help
+  autocmd!
+  autocmd FileType help nnoremap <silent> <buffer> q :bd<CR>
+augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+"plugin config
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Folding
+let g:SimplyFold_docstring_preview=1
+"Force updating even on indent fold mode
+let g:fastfold_force = 1
+"Enable folding on small files as well
+let g:fastfold_minlines = 0
+
+"NerdTree
+let NERDTreeIgnore=['\.pyc$', '\~$']
+nnoremap <leader>- :NERDTreeToggle<CR>
+
+"Tagbar
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+nnoremap <leader>ö :TagbarToggle<CR>
+
+"Jedi
+let g:jedi#completions_enabled = 0
+let g:jedi#use_splits_not_buffers = "right"
+"let g:jedi#completions_command = "<S-Space>"
+
+"deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('yarp', v:true)
+
+"supertab
+let g:SuperTabRetainCompletionDuration = 'completion'
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = 'context'
+"autocmd FileType *
+"\ if &omnifunc != '' |
+"\   call SuperTabChain(&omnifunc, "<c-p>") |
+"\ endif
+
+"ale
+let g:ale_sign_column_always=1
+let g:ale_fixers = {'python': ['remove_trailing_lines', 'isort', 'black']}
+let g:ale_python_pylint_change_directory=0
+let g:ale_python_isort_options='-tc -up -w 88 -m 5'
+"let g:ale_python_black_options='--py36'
+nnoremap <Leader>. :ALEFix<CR>
+
+"airline config
+"let g:airline#extensions#ale#enabled=1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
