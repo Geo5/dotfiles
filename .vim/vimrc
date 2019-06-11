@@ -1,10 +1,9 @@
+packloadall
 
 "colorscheme
 let g:dracula_italic = 0
 let g:dracula_bold = 0
 set termguicolors
-colorscheme dracula
-syntax on
 "Spell laguage
 "TODO: mapping for changing the language
 set spelllang=en_gb
@@ -12,9 +11,12 @@ set spelllang=en_gb
 "set spellfile=
 
 filetype plugin indent on
+syntax on
+colorscheme dracula
+
 set encoding=utf-8
 let mapleader=","
-"let maplocalleader="#"
+let maplocalleader=","
 
 " Status Line 
 hi StatusLineNC ctermbg=242 ctermfg=238 guifg=#BCB8B1 guibg=#1E2028
@@ -65,6 +67,8 @@ set virtualedit=block,onemore
 hi! DraculaComment guifg=#7488C9
 "menu for autocompletion
 set wildmenu
+set wildignore+=*.pyc,*~$,*.*cache/*
+set path+=**
 "visual bell 
 set visualbell
 "automatic saving on buffer changing
@@ -81,9 +85,6 @@ set sessionoptions=buffers,help,options,winsize
 "key mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"map 8 and 9 to [ and ] for 1 less keystroke on qwertz layout
-"nnoremap 8 [
-"nnoremap 9 ]
 "open vimrc
 nnoremap <leader>rc :vsplit $MYVIMRC<cr>
 "source vimrc
@@ -144,6 +145,18 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 "plugin config
 """"""""""""""""""""""""""""""""""""""""""""""""""""
+"netrw
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_winsize = 25
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+augroup newtr
+  autocmd!
+  autocmd FileType netrw set nolist
+  autocmd FileType netrw nmap <silent> <buffer> o <CR>:Lex<CR>
+augroup END
+noremap <silent> <leader>- :Lex<CR>
+
 
 "Folding
 let g:SimplyFold_docstring_preview=1
@@ -151,33 +164,28 @@ let g:SimplyFold_docstring_preview=1
 let g:fastfold_force = 1
 "Enable folding on small files as well
 let g:fastfold_minlines = 0
+let g:vimtex_fold_enabled = 1
 
-"NerdTree
-let NERDTreeIgnore=['\.pyc$', '\~$']
-nnoremap <leader>- :NERDTreeToggle<CR>
+"gutentags
+let g:gutentags_generate_on_missing=0
+let g:gutentags_generate_on_new=0
+"let g:gutentags_init_user_func="SetTagFile"
+let g:gutentags_ctags_auto_set_tags=0
+"ttags
+augroup tagfile
+  autocmd!
+  autocmd BufEnter * :set &tags=".git/" . &filetype . ".tags"
+  autocmd BufEnter * :let g:gutentags_ctags_extra_args=["--languages=" . &filetype]
+augroup END
+"use quickfix list
+let g:ttags_display="quickfix"
+" Show available tags
+noremap <Leader>ü :TTags<cr>
+" Show tags of the current buffer
+noremap <Leader>ö :call ttags#List(0, "*", "", ".")<cr>
+" Show tags containing the word under the cursor
+noremap <Leader>ä :call ttags#List(0, "*", "^" . tlib#rx#Escape(expand("<cword>")) .".*")<cr>
 
-"Tagbar
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
-nnoremap <leader>ö :TagbarToggle<CR>
-
-"Jedi
-let g:jedi#completions_enabled = 0
-let g:jedi#use_splits_not_buffers = "right"
-"let g:jedi#completions_command = "<S-Space>"
-
-"deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('yarp', v:true)
-
-"supertab
-let g:SuperTabRetainCompletionDuration = 'completion'
-let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabDefaultCompletionType = 'context'
-"autocmd FileType *
-"\ if &omnifunc != '' |
-"\   call SuperTabChain(&omnifunc, "<c-p>") |
-"\ endif
 
 "ale
 let g:ale_sign_column_always=1
@@ -186,9 +194,3 @@ let g:ale_python_pylint_change_directory=0
 let g:ale_python_isort_options='-tc -up -w 88 -m 5'
 "let g:ale_python_black_options='--py36'
 nnoremap <Leader>. :ALEFix<CR>
-
-"airline config
-"let g:airline#extensions#ale#enabled=1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-

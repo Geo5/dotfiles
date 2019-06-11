@@ -38,7 +38,7 @@ bindsym $mod+f fullscreen toggle
 
 # toggle tiling / floating
 #bindsym $mod+Shift+space sticky toggle
-bindsym $mod+Shift+space layout toggle
+bindsym $mod+Shift+space layout toggle tabbed splith
 bindsym $mod+Ctrl+space floating toggle
 
 # change focus between tiling / floating windows
@@ -159,7 +159,7 @@ default_border pixel 2
 default_floating_border pixel 2
 for_window [class="*"] border pixel 2
 default_orientation horizontal
-workspace_layout default
+workspace_layout tabbed
 hide_edge_borders both
 
 workspace_auto_back_and_forth yes

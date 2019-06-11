@@ -5,7 +5,7 @@ function op
     xdg-open $argv &
 end
 
-alias vimrc "vim ~/.vimrc"
+alias vimrc "vim ~/.vim/vimrc"
 
 # start working on denksichtalt
 alias dsalt "cd ~/Documents/denk/DenkSichtAlt ; conda activate denksichtalt ; vim"

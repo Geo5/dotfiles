@@ -19,9 +19,6 @@
 [submodule ".vim/pack/general/start/vim-characterize"]
 	path = .vim/pack/general/start/vim-characterize
 	url = https://github.com/tpope/vim-characterize.git
-[submodule ".vim/pack/general/start/nerdtree"]
-	path = .vim/pack/general/start/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule ".vim/pack/general/start/surround"]
 	path = .vim/pack/general/start/surround
 	url = https://github.com/tpope/vim-surround.git
@@ -31,3 +28,24 @@
 [submodule ".vim/pack/general/start/vim-fugitive"]
 	path = .vim/pack/general/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/pack/general/start/vim-dirvish"]
+	path = .vim/pack/general/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule ".vim/pack/general/start/vim-gutentags"]
+	path = .vim/pack/general/start/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule ".vim/pack/general/start/vim-qlist"]
+	path = .vim/pack/general/start/vim-qlist
+	url = https://github.com/romainl/vim-qlist.git
+[submodule ".vim/pack/general/start/tlib_vim"]
+	path = .vim/pack/general/start/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule ".vim/pack/general/start/ttags_vim"]
+	path = .vim/pack/general/start/ttags_vim
+	url = https://github.com/tomtom/ttags_vim.git
+[submodule ".vim/pack/general/start/vim-indent-object"]
+	path = .vim/pack/general/start/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule ".vim/pack/general/start/vim-vinegar"]
+	path = .vim/pack/general/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
