@@ -1,3 +1,6 @@
+"Load the netrw plugin manually to ensure, that the vim-vinegar settings are
+"correctly apllied.
+source ~/.vim/plugin/netrwPlugin.vim
 packloadall
 
 "colorscheme
@@ -67,7 +70,7 @@ set virtualedit=block,onemore
 hi! DraculaComment guifg=#7488C9
 "menu for autocompletion
 set wildmenu
-set wildignore+=*.pyc,*~$,*.*cache/*
+set wildignore+=*.pyc,*cache*
 set path+=**
 "visual bell 
 set visualbell
@@ -118,14 +121,17 @@ nnoremap <Down> 5<Down>
 "clear last search pattern
 nnoremap <leader>c :let @/=""<CR>
 "nnoremap <esc> :noh<return><esc>
-"clear search highlight on entering insert mode
-"autocmd InsertEnter * :noh
 "map Y do yank to the end of the line
 nnoremap Y y$
 "turn on spellchecking for current file
 nnoremap <leader>s :setlocal spell!<CR>
 "Enter in normal mode inserts newline
 nnoremap <cr> i<cr><esc>
+"Enter in QF windows should not be remapped
+augroup mapings
+  autocmd!
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>
+augroup END
 "search results are always centered
 nnoremap n nzz
 nnoremap N Nzz
@@ -134,6 +140,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+"Quick file opening
+nnoremap <leader>f :find 
 
 "Close help when pressing q
 augroup help
@@ -174,18 +182,18 @@ let g:gutentags_ctags_auto_set_tags=0
 "ttags
 augroup tagfile
   autocmd!
-  autocmd BufEnter * :set &tags=".git/" . &filetype . ".tags"
-  autocmd BufEnter * :let g:gutentags_ctags_extra_args=["--languages=" . &filetype]
+  autocmd BufEnter * :exec "set" "tags=.git/" . &filetype . ".tags"
+  autocmd BufEnter * :exec "let" "g:gutentags_ctags_tagfile=\".git/" . &filetype . ".tags\""
+  autocmd BufEnter * :exec "let" "g:gutentags_ctags_extra_args=[\"--tag-relative=yes\", \"--languages=" . &filetype ."\", \"-f .git/" . &filetype . ".tags\"]"
 augroup END
 "use quickfix list
 let g:ttags_display="quickfix"
 " Show available tags
 noremap <Leader>ü :TTags<cr>
 " Show tags of the current buffer
-noremap <Leader>ö :call ttags#List(0, "*", "", ".")<cr>
+noremap <Leader>ö :call ttags#List(0, "*", "*", expand("%"))<cr>
 " Show tags containing the word under the cursor
-noremap <Leader>ä :call ttags#List(0, "*", "^" . tlib#rx#Escape(expand("<cword>")) .".*")<cr>
-
+noremap <Leader>ä :call ttags#List(0, "*", tlib#rx#Escape(expand("<cword>")) . ".*")<cr>
 
 "ale
 let g:ale_sign_column_always=1
@@ -194,3 +202,24 @@ let g:ale_python_pylint_change_directory=0
 let g:ale_python_isort_options='-tc -up -w 88 -m 5'
 "let g:ale_python_black_options='--py36'
 nnoremap <Leader>. :ALEFix<CR>
+
+"Vimtex
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'jobs',
+    \ 'background' : 1,
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-verbose',
+    \   '-pdf',
+    \   '-pvc',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+" Load vinegar
+packadd! vim-vinegar

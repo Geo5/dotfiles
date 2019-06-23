@@ -46,6 +46,6 @@
 [submodule ".vim/pack/general/start/vim-indent-object"]
 	path = .vim/pack/general/start/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule ".vim/pack/general/start/vim-vinegar"]
-	path = .vim/pack/general/start/vim-vinegar
+[submodule ".vim/pack/general/opt/vim-vinegar"]
+	path = .vim/pack/general/opt/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
