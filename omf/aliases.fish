@@ -1,4 +1,5 @@
 alias ls "ls --color"
+alias cat bat
 # alias op "xdg-open"
 
 function op
