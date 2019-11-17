@@ -1,14 +1,7 @@
-# use alt als modifier
 set $mod Mod4
-# Font for window titles. Will also be used by the bar unless a different font # is used in the bar {} block below.
-#font pango:monospace 8
+font pango:MesloLGMDZ Nerd Font 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
->>>>>>> Stashed changes
-
-# Use Mouse+$mod to drag floating windows to their wanted position floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Use Mouse+$mod to drag floating windows to their wanted position floating_modifier $mod
@@ -30,14 +23,15 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+Shift+v split h;exec notify-send 'tile horizontally'
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+w layout toggle tabbed splith
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # toggle sticky
@@ -92,10 +86,9 @@ bindsym $mod+Shift+t reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+s exec qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 # shutdown computer
-#bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Shutdown the computer?' -b 'Yes' 'sudo shutdown -P now'"
+bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Shutdown the computer?' -b 'Yes' 'sudo shutdown -P now'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -104,7 +97,6 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
-        #bindsym odiaeresis resize grow width 20 px or 20 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -120,103 +112,58 @@ mode "resize" {
 
 bindsym $mod+i mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3status
-# }
+# Start i3bar to display a workspace bar
+bar {
+    status_command ~/.config/i3/i3py
+    position top
+    workspace_buttons yes
+    separator_symbol "  "
+    strip_workspace_numbers yes
+    # mode hide
+    colors {
+        separator $selection
+        background $bg
+        statusline $fg
+        focused_workspace $purple $purple $selection
+        active_workspace $fg $fg $bg
+        inactive_workspace $bg $bg $fg
+        urgent_workspace $red $red $fg
+    }
+}
 
-# gaps config
-for_window [class="^.*"] border pixel 0
-gaps inner 10
-gaps outer 10
-smart_gaps inverse_outer
-smart_borders on
-bindsym $mod+g		gaps inner all plus 5
-bindsym $mod+Shift+g	gaps inner all minus 5
+
+bindsym $mod+y [urgent=latest] focus
 
 # other window settings
-default_border pixel 2
-default_floating_border pixel 2
-for_window [class="*"] border pixel 2
 default_orientation horizontal
 workspace_layout tabbed
-hide_edge_borders smart
+hide_edge_borders both
 workspace_auto_back_and_forth yes
 
 # # # # Applications # # # #
-# start krunner
-# bindsym $mod+d exec --no-startup-id qdbus org.kde.kglobalaccel /component/krunner org.kde.kglobalaccel.Component.invokeShortcut 'run command'
-bindsym $mod+d exec --no-startup-id krunner
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 bindsym $mod+Shift+c exec firefox
+# start dmenu (a program launcher)
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -i -l 20 -p '' -fn 'MesloLGMDZ Nerd Font-8' -nb '#282a36' -nf '#f8f8f2' -sf '#282a36' -sb '#bd93f9'"
 
-# set the wallpaper
-# exec_always --no-startup-id feh --bg-scale --randomize ~/Pictures/wallpapers/
-exec_always --no-startup-id dwall -s=firewatch2
-# switch wallpaper
-bindsym $mod+Shift+p exec --no-startup-id feh --bg-scale --randomize ~/Pictures/wallpapers/
-bindsym $mod+Ctrl+p exec --no-startup-id bash ~/.config/i3/wallpaper-switcher/switch.sh
-
-# start compton
-exec --no-startup-id compton -b
+# run auto setup
+exec --no-startup-id "feh --bg-center ~/Pictures/wallpaper.jpg"
+exec --no-startup-id nm-applet
+exec --no-startup-id keepass ~/Data/Passworter.kdbx
+exec --no-startup-id mupdf ~/Data/vim-cheatsheet.pdf
+exec --no-startup-id alacritty
 
 # names workspaces automatically
 exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
 
-# franz opens in scratchpad always
-for_window [title="Franz"] move scratchpad
-exec --no-startup-id franz
-
-# For the steam friends list
-for_window [title="Friends List"] floating enable, border none
-for_window [class="TeamSpeak 3"] move scratchpad
-
-# Keepass window
-for_window [class="KeePassXC"] floating enable, border none
-
-# settings for integrating with KDE, see https://userbase.kde.org/Tutorials/Using_Other_Window_Managers_with_Plasma
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
-for_window [class="yakuake"] floating enable, border none
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable, border none
-for_window [title="plasma-desktop"] floating enable, border none
-for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
-for_window [class="Kmix"] floating enable, border none
-for_window [class="Klipper"] floating enable, border none
-for_window [class="Plasmoidviewer"] floating enable, border none
-for_window [class="plasmashell" window_type="notification"] floating enable, move position 1564 px 58 px, border none, focus_on_window_activation none
-no_focus [class="plasmashell" window_type="notification"] 
+# assign to workspaces
+assign [class="KeePassXC"] workspace number 3
+assign [title=".*cheatsheet.*"] workspace number 3
 
 
-# # # # Colors # # # #
-# load colors from ~/.Xresources
-# The ~/.Xresources should contain a line such as
-#     *color0: #121212
-# and must be loaded properly, e.g., by using
-#     xrdb ~/.Xresources
-# set_from_resource $term_background background
-# set_from_resource $term_foreground foreground
-# set_from_resource $term_color0     color0
-# set_from_resource $term_color1     color1
-# set_from_resource $term_color2     color2
-# set_from_resource $term_color3     color3
-# set_from_resource $term_color4     color4
-# set_from_resource $term_color5     color5
-# set_from_resource $term_color6     color6
-# set_from_resource $term_color7     color7
-# set_from_resource $term_color8     color8
-# set_from_resource $term_color9     color9
-# set_from_resource $term_color10    color10
-# set_from_resource $term_color11    color11
-# set_from_resource $term_color12    color12
-# set_from_resource $term_color13    color13
-# set_from_resource $term_color14    color14
-# set_from_resource $term_color15    color15
 # colors
 set $bg         #282a36
 set $selection  #44475a

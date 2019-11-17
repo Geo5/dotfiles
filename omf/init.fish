@@ -3,6 +3,8 @@ set -x TERM xterm-256color
 set -gx VISUAL vim
 set -gx EDITOR vim
 set -gx QT_STYLE_OVERRIDE gtk2
+# for ssh agent
+#set -gx SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
  
 # Aliases
 source ~/.config/omf/aliases.fish
