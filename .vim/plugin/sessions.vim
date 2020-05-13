@@ -34,6 +34,12 @@ function LoadSession() abort
   endif
 endfunction
 
+function ClearSession() abort
+  let b:sessionfile = g:sessions_dir . "/session.vim"
+  exe 'silent !rm ' b:sessionfile
+  redraw!
+endfunction
+
 " Adding automatons for when entering or leaving Vim
 if(argc() == 0)
   au VimEnter * nested :call LoadSession()
@@ -41,3 +47,5 @@ if(argc() == 0)
 else
   au VimLeave * :call MakeSession(0)
 endif
+
+nnoremap <leader>ds :%bd<CR>:call ClearSession()<CR>

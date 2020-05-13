@@ -66,6 +66,8 @@ hi clear CursorLine
 set cursorline
 "cursor can move behind last character
 set virtualedit=block,onemore
+"always keep 10 lines below cursor
+set scrolloff=10
 "Lighten up the comment colour to be able to see them better
 hi! DraculaComment guifg=#7488C9
 "menu for autocompletion
@@ -74,6 +76,7 @@ set wildignore+=*.pyc,*cache*
 set path+=**
 "visual bell 
 set visualbell
+set vb t_vb=
 "automatic saving on buffer changing
 set autowrite
 "read updates from elsewhere automatic
@@ -201,6 +204,7 @@ let g:ale_fixers = {'python': ['remove_trailing_lines', 'isort', 'black']}
 let g:ale_python_pylint_change_directory=0
 let g:ale_python_isort_options='-tc -up -w 88 -m 5'
 "let g:ale_python_black_options='--py36'
+let g:doge_doc_standard_python = 'google'
 nnoremap <Leader>. :ALEFix<CR>
 
 "Vimtex

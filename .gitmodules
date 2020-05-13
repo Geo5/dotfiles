@@ -49,3 +49,6 @@
 [submodule ".vim/pack/general/opt/vim-vinegar"]
 	path = .vim/pack/general/opt/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule ".vim/pack/general/start/vim-doge"]
+	path = .vim/pack/general/start/vim-doge
+	url = https://github.com/kkoomen/vim-doge.git
