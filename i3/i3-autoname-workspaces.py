@@ -50,6 +50,7 @@ FA_FILE_EXCEL_O = '\uf1c3'
 FA_RSS_SQUARE = '\uf143'
 FA_FILES_O = '\uf0c5'
 FA_FIREFOX = '\uf269'
+FA_FIREFOX = '\uf269'
 FA_ENVELOPE_O = '\uf0e0'
 FA_EYEDROPPER = '\uf1fb'
 FA_MUSIC = '\uf001'
@@ -70,13 +71,14 @@ FA_SLACK = '\uf198'
 FA_CLOCK_O = '\uf017'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
+    'Alacritty': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
     'telegram-desktop': FA_TELEGRAM,
     'Slack': FA_SLACK,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
     'gvim': FA_CODE,
-    'firefox': FA_FIREFOX,
+    'Firefox': FA_FIREFOX,
     'Thunderbird': FA_ENVELOPE_O,
     'libreoffice-calc': FA_FILE_EXCEL_O,
     'libreoffice': FA_FILE_TEXT_O,
@@ -97,7 +99,9 @@ WINDOW_ICONS = {
     'Steam': FA_STEAM,
     'SWT': FA_DATABASE, #DBeaver changed its wm_class name?
     'DBeaver': FA_DATABASE,
-    'KeeWeb': FA_KEY
+    'KeeWeb': FA_KEY,
+    'KeePassXC': FA_KEY,
+    'MuPDF': FA_FILE_PDF_O,
 }
 
 
@@ -129,7 +133,7 @@ def icon_for_window(window):
             if cls in WINDOW_ICONS:
                 return WINDOW_ICONS[cls] + ' '
         print('No icon available for window with classes: %s' % str(classes))
-    return '*'
+    return '* '
 
 # renames all workspaces based on the windows present
 def rename():
