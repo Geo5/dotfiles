@@ -1,7 +1,13 @@
 "Load the netrw plugin manually to ensure, that the vim-vinegar settings are
 "correctly apllied.
 source ~/.vim/plugin/netrwPlugin.vim
+"set the leader before loading plugins to ensure correct mappings
+let mapleader=","
+let maplocalleader=","
+
 packloadall
+
+set encoding=utf-8
 
 "colorscheme
 let g:dracula_italic = 0
@@ -16,10 +22,6 @@ set spelllang=en_gb
 filetype plugin indent on
 syntax on
 colorscheme dracula
-
-set encoding=utf-8
-let mapleader=","
-let maplocalleader=","
 
 " Status Line 
 hi StatusLineNC ctermbg=242 ctermfg=238 guifg=#BCB8B1 guibg=#1E2028
@@ -192,11 +194,19 @@ augroup END
 "use quickfix list
 let g:ttags_display="quickfix"
 " Show available tags
-noremap <Leader>ü :TTags<cr>
+noremap <Leader>t. :TTags<CR>
 " Show tags of the current buffer
-noremap <Leader>ö :call ttags#List(0, "*", "*", expand("%"))<cr>
+noremap <Leader>t% :call ttags#List(0, "*", "*", expand("%"))<CR>
 " Show tags containing the word under the cursor
-noremap <Leader>ä :call ttags#List(0, "*", tlib#rx#Escape(expand("<cword>")) . ".*")<cr>
+noremap <Leader>t* :call ttags#List(0, "*", ".*" . tlib#rx#Escape(expand("<cword>")) . ".*")<CR>
+
+" Show tags matching the word under cursor (search also in |g:tlib_tags_extra|)
+noremap <Leader>t? :call ttags#List(1, "*", tlib#rx#Escape(expand("<cword>")))<CR>
+
+" Show tags of a certain category
+for c in split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', '\zs')
+    exec 'noremap <Leader>t'. c .' :TTags '. c .'<CR>'
+endfor
 
 "ale
 let g:ale_sign_column_always=1
