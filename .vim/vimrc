@@ -154,6 +154,10 @@ augroup help
   autocmd FileType help nnoremap <silent> <buffer> q :bd<CR>
 augroup END
 
+"diff
+nnoremap <leader>2 :diffget //2<CR>
+nnoremap <leader>3 :diffget //3<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 "plugin config

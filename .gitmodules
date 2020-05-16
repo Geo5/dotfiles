@@ -52,3 +52,6 @@
 [submodule ".vim/pack/general/start/vim-doge"]
 	path = .vim/pack/general/start/vim-doge
 	url = https://github.com/kkoomen/vim-doge.git
+[submodule ".vim/pack/general/start/context.vim"]
+	path = .vim/pack/general/start/context.vim
+	url = https://github.com/wellle/context.vim.git
