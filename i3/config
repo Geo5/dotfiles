@@ -6,7 +6,6 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVu Sans Mono 8
->>>>>>> Stashed changes
 
 # Use Mouse+$mod to drag floating windows to their wanted position floating_modifier $mod
 floating_modifier $mod
@@ -38,6 +37,7 @@ bindsym $mod+v split v;exec notify-send 'tile vertically'
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+bindsym $mod+w layout toggle tabbed splith
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # toggle sticky
@@ -167,9 +167,13 @@ exec --no-startup-id compton -b
 # names workspaces automatically
 exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
 
+# to unlock kwallet on login
+exec --no-startup-id /usr/lib/pam_kwallet_init
+
 # franz opens in scratchpad always
-for_window [title="Franz"] move scratchpad
-exec --no-startup-id franz
+for_window [class="Ferdi"] floating enable, move scratchpad
+exec --no-startup-id ferdi
+for_window [class="Ferdi"] [floating] resize set 1200 800, move position 360 px 100 px
 
 # For the steam friends list
 for_window [title="Friends List"] floating enable, border none

@@ -5,4 +5,4 @@ set -q XDG_DATA_HOME
 
 # Load Oh My Fish configuration.
 source $OMF_PATH/init.fish
-source ~/anaconda3/etc/fish/conf.d/conda.fish
+source ~/miniconda3/etc/fish/conf.d/conda.fish

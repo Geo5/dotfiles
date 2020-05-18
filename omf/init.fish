@@ -2,8 +2,7 @@
 set -x TERM xterm-256color
 set -gx VISUAL vim
 set -gx EDITOR vim
-set -gx QT_STYLE_OVERRIDE gtk2
- 
+
 # Aliases
 source ~/.config/omf/aliases.fish
 
