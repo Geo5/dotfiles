@@ -167,7 +167,7 @@ bindsym $mod+Shift+p exec --no-startup-id feh --bg-scale --randomize ~/Pictures/
 bindsym $mod+Ctrl+p exec --no-startup-id bash ~/.config/i3/wallpaper-switcher/switch.sh
 
 # start compton
-exec --no-startup-id compton -b
+# exec --no-startup-id picom -b --xrender-sync-fence --vsync --backend glx -i 1.0
 
 # names workspaces automatically
 exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
@@ -182,7 +182,14 @@ for_window [class="Ferdi"] [floating] resize set 1200 800, move position 360 px 
 
 # For the steam friends list
 for_window [title="Friends List"] floating enable, border none
-for_window [class="TeamSpeak 3"] move scratchpad
+
+# Vibrant Linux
+for_window [class="vibrantLinux"] floating enable, border none
+# It should only be open in system tray
+exec --no-startup-id i3-msg "[class=\\"vibrantLinux\\"] kill"
+
+# Teamspeak
+for_window [title="TeamSpeak 3"] move scratchpad
 
 # Keepass window
 for_window [class="KeePassXC"] floating enable, border none

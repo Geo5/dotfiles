@@ -2,3 +2,5 @@
 	cmd = vim -f -c \"Gvdiff\" \"$MERGED\"
 [merge]
 	tool = fugitive
+[credential]
+	helper = cache --timeout=3600

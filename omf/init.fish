@@ -2,6 +2,9 @@
 set -x TERM xterm-256color
 set -gx VISUAL vim
 set -gx EDITOR vim
+set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
+set -gx MOZ_X11_EGL 1
+set -gx LIBVA_DRIVER_NAME vdpau
 
 # Aliases
 source ~/.config/omf/aliases.fish

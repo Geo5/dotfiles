@@ -18,3 +18,4 @@ alias gs "git status"
 alias satk "env TERM=xterm satk"
 alias mono "env TERM=xterm mono"
 
+alias fcam "fakecam -W 1920 -H 1080 --no-foreground --background-blur 50" 
