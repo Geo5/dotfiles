@@ -180,13 +180,17 @@ for_window [class="Ferdi"] floating enable, move scratchpad
 exec --no-startup-id ferdi
 for_window [class="Ferdi"] [floating] resize set 1200 800, move position 360 px 100 px
 
+# signal opens in scratchpad always
+for_window [class="Signal"] floating enable, move scratchpad
+for_window [class="Signal"] [floating] resize set 1200 800, move position 360 px 100 px
+
 # For the steam friends list
 for_window [title="Friends List"] floating enable, border none
 
 # Vibrant Linux
 for_window [class="vibrantLinux"] floating enable, border none
 # It should only be open in system tray
-exec --no-startup-id i3-msg "[class=\\"vibrantLinux\\"] kill"
+# exec --no-startup-id i3-msg "[class=\\"vibrantLinux\\"] kill"
 
 # Teamspeak
 for_window [title="TeamSpeak 3"] move scratchpad
