@@ -1,0 +1,23 @@
+[Desktop Entry]
+Categories=Utility;Security;Qt;
+Comment[en_US]=Community-driven port of the Windows application “KeePass Password Safe”
+Comment=Community-driven port of the Windows application “KeePass Password Safe”
+Exec=bash -c "kwallet-query kdewallet -f keepass -r Passworter.kdbx | /usr/bin/keepassxc --pw-stdin ~/.keepass/Passworter.kdbx"
+GenericName[en_US]=Password Manager
+GenericName=Password Manager
+Icon=keepassxc
+MimeType=application/x-keepass2;
+Name[en_US]=KeePassXC
+Name=KeePassXC
+Path=
+StartupNotify=true
+StartupWMClass=keepassxc
+Terminal=true
+TerminalOptions=
+TryExec=keepassxc
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

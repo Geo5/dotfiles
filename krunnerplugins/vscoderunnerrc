@@ -1,0 +1,4 @@
+[Config]
+appNameMatches=true
+path=/home/georg/.config/Code - OSS/User/globalStorage/alefragnani.project-manager/projects.json
+projectNameMatches=true
