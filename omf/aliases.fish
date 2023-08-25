@@ -1,5 +1,6 @@
 alias ls "ls --color"
 alias cat bat
+alias egrep "grep -E"
 # alias op "xdg-open"
 
 function op
@@ -9,7 +10,7 @@ end
 alias vimrc "vim ~/.vim/vimrc"
 
 # start working on denksichtalt
-alias dsalt "cd ~/Documents/denk/DenkSichtAlt ; conda activate denksichtalt ; vim"
+#alias dsalt "cd ~/Documents/denk/DenkSichtAlt ; conda activate denksichtalt ; vim"
 
 # git aliases
 alias gs "git status"
