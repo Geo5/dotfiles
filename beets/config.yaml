@@ -1,0 +1,21 @@
+directory: ~/Music
+library: ~/Data/musiclibrary.db
+import:
+  move: yes
+  incremental_skip_later: yes
+  bell: yes
+ui:
+  color: yes
+musicbrainz:
+  genres: yes
+pluginpath:
+  - /home/georg/git/beet-summarize/beetsplug
+
+plugins: fromfilename chroma acousticbrainz embedart fetchart replaygain scrub fish thumbnails fuzzy permissions lastgenre duplicates missing info summarize
+
+replaygain:
+  backend: ffmpeg
+
+thumbnails:
+  dolphin: yes
+
