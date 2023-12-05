@@ -10,8 +10,11 @@ musicbrainz:
   genres: yes
 pluginpath:
   - /home/georg/git/beet-summarize/beetsplug
+  - /home/georg/git/BeetsPluginYearFixer/beetsplug
+  - /home/georg/git/BeetsPluginAutofix/beetsplug
+  - /home/georg/git/BeetsPluginDescribe/beetsplug
 
-plugins: fromfilename chroma acousticbrainz embedart fetchart replaygain scrub fish thumbnails fuzzy permissions lastgenre duplicates missing info summarize
+plugins: fromfilename chroma acousticbrainz embedart fetchart replaygain scrub fish thumbnails fuzzy permissions lastgenre duplicates missing info summarize bpd autofix yearfixer describe
 
 replaygain:
   backend: ffmpeg

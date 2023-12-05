@@ -28,7 +28,7 @@ function __fish_beet_use_extra
     return 1
 end
 
-set CMDS acousticbrainz clearart completion config dup duplicates embedart extractart fetchart fields fingerprint fish ? help imp im import info lastgenre ls list miss missing mod modify mv move rm remove replaygain scrub stats submit summarize thumbnails upd up update version write
+set CMDS acousticbrainz autofix bpd clearart completion config describe dup duplicates embedart extractart fetchart fields fingerprint fish ? help imp im import info lastgenre ls list miss missing mod modify mv move rm remove replaygain scrub stats submit summarize thumbnails upd up update version write yearfixer
 
 set FIELDS acoustid_fingerprint: acoustid_id: added: album: album_id: albumartist: albumartist_credit: albumartist_sort: albumdisambig: albumstatus: albumtotal: albumtype: albumtypes: arranger: artist: artist_credit: artist_sort: artpath: asin: bitdepth: bitrate: bpm: catalognum: channels: comments: comp: composer: composer_sort: country: day: disc: discogs_albumid: discogs_artistid: discogs_labelid: disctitle: disctotal: encoder: filesize: format: genre: grouping: id: initial_key: isrc: label: language: length: lyricist: lyrics: mb_albumartistid: mb_albumid: mb_artistid: mb_releasegroupid: mb_releasetrackid: mb_trackid: mb_workid: media: missing: month: mtime: original_day: original_month: original_year: path: r128_album_gain: r128_track_gain: releasegroupdisambig: rg_album_gain: rg_album_peak: rg_track_gain: rg_track_peak: samplerate: script: singleton: style: title: track: trackdisambig: tracktotal: work: work_disambig: year:
 
@@ -49,6 +49,14 @@ complete -c beet -n '__fish_beet_needs_command' -s  h  -l help -f -d 'print this
 complete -c beet -n '__fish_beet_needs_command' -a acousticbrainz -f -d 'fetch metadata from AcousticBrainz'
 complete -c beet -n '__fish_beet_using_command acousticbrainz' -a '$FIELDS' -f -d 'fieldname'
 
+# ------ fieldsetups for  autofix -------
+complete -c beet -n '__fish_beet_needs_command' -a autofix -f -d 'execute repetitive tasks in one go'
+complete -c beet -n '__fish_beet_using_command autofix' -a '$FIELDS' -f -d 'fieldname'
+
+# ------ fieldsetups for  bpd -------
+complete -c beet -n '__fish_beet_needs_command' -a bpd -f -d 'run an MPD-compatible music player server'
+complete -c beet -n '__fish_beet_using_command bpd' -a '$FIELDS' -f -d 'fieldname'
+
 # ------ fieldsetups for  clearart -------
 complete -c beet -n '__fish_beet_needs_command' -a clearart -f -d 'remove images from file metadata'
 complete -c beet -n '__fish_beet_using_command clearart' -a '$FIELDS' -f -d 'fieldname'
@@ -60,6 +68,10 @@ complete -c beet -n '__fish_beet_using_command completion' -a '$FIELDS' -f -d 'f
 # ------ fieldsetups for  config -------
 complete -c beet -n '__fish_beet_needs_command' -a config -f -d 'show or edit the user configuration'
 complete -c beet -n '__fish_beet_using_command config' -a '$FIELDS' -f -d 'fieldname'
+
+# ------ fieldsetups for  describe -------
+complete -c beet -n '__fish_beet_needs_command' -a describe -f -d 'describe a library item field'
+complete -c beet -n '__fish_beet_using_command describe' -a '$FIELDS' -f -d 'fieldname'
 
 # ------ fieldsetups for  dup -------
 complete -c beet -n '__fish_beet_needs_command' -a dup -f -d 'List duplicate tracks or albums.'
@@ -205,11 +217,25 @@ complete -c beet -n '__fish_beet_using_command version' -a '$FIELDS' -f -d 'fiel
 complete -c beet -n '__fish_beet_needs_command' -a write -f -d 'write tag information to files'
 complete -c beet -n '__fish_beet_using_command write' -a '$FIELDS' -f -d 'fieldname'
 
+# ------ fieldsetups for  yearfixer -------
+complete -c beet -n '__fish_beet_needs_command' -a yearfixer -f -d 'fix `original_year` and `year` tags on library items'
+complete -c beet -n '__fish_beet_using_command yearfixer' -a '$FIELDS' -f -d 'fieldname'
+
 
 
 # ====== completions for  acousticbrainz =====
 complete -c beet -n '__fish_beet_using_command acousticbrainz' -s f -l force -f -d 're-download data when already present'
 complete -c beet -n '__fish_beet_using_command acousticbrainz' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  autofix =====
+complete -c beet -n '__fish_beet_using_command autofix' -r -s m -l max_exec_time -f -d '[default: 0] interrupt execution after this the number of seconds'
+complete -c beet -n '__fish_beet_using_command autofix' -s v -l version -f -d 'show plugin version'
+complete -c beet -n '__fish_beet_using_command autofix' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  bpd =====
+complete -c beet -n '__fish_beet_using_command bpd' -s h -l help -f -d 'print help'
 
 
 # ====== completions for  clearart =====
@@ -227,6 +253,11 @@ complete -c beet -n '__fish_beet_using_command config' -s e -l edit -f -d 'edit 
 complete -c beet -n '__fish_beet_using_command config' -s d -l defaults -f -d 'include the default configuration'
 complete -c beet -n '__fish_beet_using_command config' -s c -l clear -f -d 'do not redact sensitive fields'
 complete -c beet -n '__fish_beet_using_command config' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  describe =====
+complete -c beet -n '__fish_beet_using_command describe' -s v -l version -f -d 'show plugin version'
+complete -c beet -n '__fish_beet_using_command describe' -s h -l help -f -d 'print help'
 
 
 # ====== completions for  dup =====
@@ -560,3 +591,9 @@ complete -c beet -n '__fish_beet_using_command version' -s h -l help -f -d 'prin
 complete -c beet -n '__fish_beet_using_command write' -s p -l pretend -f -d 'show all changes but do nothing'
 complete -c beet -n '__fish_beet_using_command write' -s f -l force -f -d 'write tags even if the existing tags match the database'
 complete -c beet -n '__fish_beet_using_command write' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  yearfixer =====
+complete -c beet -n '__fish_beet_using_command yearfixer' -s f -l force -f -d '[default: False] force analysis of items with non-zero bpm values'
+complete -c beet -n '__fish_beet_using_command yearfixer' -s v -l version -f -d 'show plugin version'
+complete -c beet -n '__fish_beet_using_command yearfixer' -s h -l help -f -d 'print help'
