@@ -7,6 +7,7 @@ set -gx MOZ_X11_EGL 1
 # set -gx LIBVA_DRIVER_NAME vdpau
 
 fish_add_path -P ~/.local/bin ~/go/bin
+fish_add_path -P -p ~/.nix-profile/bin
 
 # Aliases
 source ~/.config/omf/aliases.fish

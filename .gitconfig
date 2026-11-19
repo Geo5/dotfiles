@@ -31,8 +31,6 @@
 	defaultBranch = main
 [gpg]
 	format = ssh
-[user]
-	signingkey = /home/georg/.ssh/id_ed25519
 [commit]
 	gpgsign = true
 [tag]
@@ -44,3 +42,9 @@
 	required = true
 [push]
 	followTags = true
+[diff]
+	algorithm = histogram
+[gpg "ssh"]
+	defaultKeyCommand = ssh-add -L
+[rerere]
+	enabled = true

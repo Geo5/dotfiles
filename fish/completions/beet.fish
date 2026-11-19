@@ -28,9 +28,9 @@ function __fish_beet_use_extra
     return 1
 end
 
-set CMDS acousticbrainz autofix bpd clearart completion config describe dup duplicates embedart extractart fetchart fields fingerprint fish ? help imp im import info lastgenre ls list miss missing mod modify mv move rm remove replaygain scrub stats submit summarize thumbnails upd up update version write yearfixer
+set CMDS autofix bareasc bpd clearart completion config convert describe dup duplicates embedart extractart fetchart fields fingerprint fish ? help imp im import info lastgenre ls list mbsync miss missing mod modify mv move rm remove replaygain scrub stats submit summarize thumbnails unimported upd up update version write yearfixer
 
-set FIELDS acoustid_fingerprint: acoustid_id: added: album: album_id: albumartist: albumartist_credit: albumartist_sort: albumdisambig: albumstatus: albumtotal: albumtype: albumtypes: arranger: artist: artist_credit: artist_sort: artpath: asin: bitdepth: bitrate: bpm: catalognum: channels: comments: comp: composer: composer_sort: country: day: disc: discogs_albumid: discogs_artistid: discogs_labelid: disctitle: disctotal: encoder: filesize: format: genre: grouping: id: initial_key: isrc: label: language: length: lyricist: lyrics: mb_albumartistid: mb_albumid: mb_artistid: mb_releasegroupid: mb_releasetrackid: mb_trackid: mb_workid: media: missing: month: mtime: original_day: original_month: original_year: path: r128_album_gain: r128_track_gain: releasegroupdisambig: rg_album_gain: rg_album_peak: rg_track_gain: rg_track_peak: samplerate: script: singleton: style: title: track: trackdisambig: tracktotal: work: work_disambig: year:
+set FIELDS acoustid_fingerprint: acoustid_id: added: album: album_id: albumartist: albumartist_credit: albumartist_sort: albumartists: albumartists_credit: albumartists_sort: albumdisambig: albumstatus: albumtotal: albumtype: albumtypes: arranger: artist: artist_credit: artist_sort: artists: artists_credit: artists_ids: artists_sort: artpath: asin: barcode: bitdepth: bitrate: bitrate_mode: bpm: catalognum: channels: comments: comp: composer: composer_sort: country: day: disc: discogs_albumid: discogs_artistid: discogs_labelid: disctitle: disctotal: encoder: encoder_info: encoder_settings: filesize: format: genre: grouping: id: initial_key: isrc: label: language: length: lyricist: lyrics: mb_albumartistid: mb_albumartistids: mb_albumid: mb_artistid: mb_artistids: mb_releasegroupid: mb_releasetrackid: mb_trackid: mb_workid: media: missing: month: mtime: original_day: original_month: original_year: path: r128_album_gain: r128_track_gain: release_group_title: releasegroupdisambig: remixer: rg_album_gain: rg_album_peak: rg_track_gain: rg_track_peak: samplerate: script: singleton: style: title: track: trackdisambig: tracktotal: work: work_disambig: year:
 
 
 # ====== setup basic beet completion =====
@@ -45,13 +45,13 @@ complete -c beet -n '__fish_beet_needs_command' -s  h  -l help -f -d 'print this
 
 # ====== setup field completion for subcommands =====
 
-# ------ fieldsetups for  acousticbrainz -------
-complete -c beet -n '__fish_beet_needs_command' -a acousticbrainz -f -d 'fetch metadata from AcousticBrainz'
-complete -c beet -n '__fish_beet_using_command acousticbrainz' -a '$FIELDS' -f -d 'fieldname'
-
 # ------ fieldsetups for  autofix -------
 complete -c beet -n '__fish_beet_needs_command' -a autofix -f -d 'execute repetitive tasks in one go'
 complete -c beet -n '__fish_beet_using_command autofix' -a '$FIELDS' -f -d 'fieldname'
+
+# ------ fieldsetups for  bareasc -------
+complete -c beet -n '__fish_beet_needs_command' -a bareasc -f -d 'unidecode version of beet list command'
+complete -c beet -n '__fish_beet_using_command bareasc' -a '$FIELDS' -f -d 'fieldname'
 
 # ------ fieldsetups for  bpd -------
 complete -c beet -n '__fish_beet_needs_command' -a bpd -f -d 'run an MPD-compatible music player server'
@@ -68,6 +68,10 @@ complete -c beet -n '__fish_beet_using_command completion' -a '$FIELDS' -f -d 'f
 # ------ fieldsetups for  config -------
 complete -c beet -n '__fish_beet_needs_command' -a config -f -d 'show or edit the user configuration'
 complete -c beet -n '__fish_beet_using_command config' -a '$FIELDS' -f -d 'fieldname'
+
+# ------ fieldsetups for  convert -------
+complete -c beet -n '__fish_beet_needs_command' -a convert -f -d 'convert to external location'
+complete -c beet -n '__fish_beet_using_command convert' -a '$FIELDS' -f -d 'fieldname'
 
 # ------ fieldsetups for  describe -------
 complete -c beet -n '__fish_beet_needs_command' -a describe -f -d 'describe a library item field'
@@ -141,6 +145,10 @@ complete -c beet -n '__fish_beet_using_command ls' -a '$FIELDS' -f -d 'fieldname
 complete -c beet -n '__fish_beet_needs_command' -a list -f -d 'query the library'
 complete -c beet -n '__fish_beet_using_command list' -a '$FIELDS' -f -d 'fieldname'
 
+# ------ fieldsetups for  mbsync -------
+complete -c beet -n '__fish_beet_needs_command' -a mbsync -f -d 'update metadata from musicbrainz'
+complete -c beet -n '__fish_beet_using_command mbsync' -a '$FIELDS' -f -d 'fieldname'
+
 # ------ fieldsetups for  miss -------
 complete -c beet -n '__fish_beet_needs_command' -a miss -f -d 'List missing tracks.'
 complete -c beet -n '__fish_beet_using_command miss' -a '$FIELDS' -f -d 'fieldname'
@@ -197,6 +205,10 @@ complete -c beet -n '__fish_beet_using_command summarize' -a '$FIELDS' -f -d 'fi
 complete -c beet -n '__fish_beet_needs_command' -a thumbnails -f -d 'Create album thumbnails'
 complete -c beet -n '__fish_beet_using_command thumbnails' -a '$FIELDS' -f -d 'fieldname'
 
+# ------ fieldsetups for  unimported -------
+complete -c beet -n '__fish_beet_needs_command' -a unimported -f -d 'list all files in the library folder which are not listed in the beets library database'
+complete -c beet -n '__fish_beet_using_command unimported' -a '$FIELDS' -f -d 'fieldname'
+
 # ------ fieldsetups for  upd -------
 complete -c beet -n '__fish_beet_needs_command' -a upd -f -d 'update the library'
 complete -c beet -n '__fish_beet_using_command upd' -a '$FIELDS' -f -d 'fieldname'
@@ -223,15 +235,17 @@ complete -c beet -n '__fish_beet_using_command yearfixer' -a '$FIELDS' -f -d 'fi
 
 
 
-# ====== completions for  acousticbrainz =====
-complete -c beet -n '__fish_beet_using_command acousticbrainz' -s f -l force -f -d 're-download data when already present'
-complete -c beet -n '__fish_beet_using_command acousticbrainz' -s h -l help -f -d 'print help'
-
-
 # ====== completions for  autofix =====
 complete -c beet -n '__fish_beet_using_command autofix' -r -s m -l max_exec_time -f -d '[default: 0] interrupt execution after this the number of seconds'
 complete -c beet -n '__fish_beet_using_command autofix' -s v -l version -f -d 'show plugin version'
 complete -c beet -n '__fish_beet_using_command autofix' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  bareasc =====
+complete -c beet -n '__fish_beet_using_command bareasc' -s a -l album -f -d 'match albums instead of tracks'
+complete -c beet -n '__fish_beet_using_command bareasc' -s p -l path -f -d 'print paths for matched items or albums'
+complete -c beet -n '__fish_beet_using_command bareasc' -r -s f -l format -f -d 'print with custom format'
+complete -c beet -n '__fish_beet_using_command bareasc' -s h -l help -f -d 'print help'
 
 
 # ====== completions for  bpd =====
@@ -249,10 +263,24 @@ complete -c beet -n '__fish_beet_using_command completion' -s h -l help -f -d 'p
 
 # ====== completions for  config =====
 complete -c beet -n '__fish_beet_using_command config' -s p -l paths -f -d 'show files that configuration was loaded from'
-complete -c beet -n '__fish_beet_using_command config' -s e -l edit -f -d 'edit user configuration with $EDITOR'
+complete -c beet -n '__fish_beet_using_command config' -s e -l edit -f -d 'edit user configuration with $VISUAL (or $EDITOR)'
 complete -c beet -n '__fish_beet_using_command config' -s d -l defaults -f -d 'include the default configuration'
 complete -c beet -n '__fish_beet_using_command config' -s c -l clear -f -d 'do not redact sensitive fields'
 complete -c beet -n '__fish_beet_using_command config' -s h -l help -f -d 'print help'
+
+
+# ====== completions for  convert =====
+complete -c beet -n '__fish_beet_using_command convert' -s p -l pretend -f -d 'show actions but do nothing'
+complete -c beet -n '__fish_beet_using_command convert' -r -s t -l threads -f -d 'change the number of threads, defaults to maximum available processors'
+complete -c beet -n '__fish_beet_using_command convert' -s k -l keep-new -f -d 'keep only the converted and move the old files'
+complete -c beet -n '__fish_beet_using_command convert' -r -s d -l dest -f -d 'set the destination directory'
+complete -c beet -n '__fish_beet_using_command convert' -r -s f -l format -f -d 'set the target format of the tracks'
+complete -c beet -n '__fish_beet_using_command convert' -s y -l yes -f -d 'do not ask for confirmation'
+complete -c beet -n '__fish_beet_using_command convert' -s l -l link -f -d 'symlink files that do not need transcoding.'
+complete -c beet -n '__fish_beet_using_command convert' -s H -l hardlink -f -d 'hardlink files that do not need transcoding. Overrides --link.'
+complete -c beet -n '__fish_beet_using_command convert' -r -s m -l playlist -f -d 'create an m3u8 playlist file containing the converted files. The playlist file will be saved below the destination directory, thus PLAYLIST could be a file name or a relative path. To ensure a working playlist when transferred to a different computer, or opened from an external drive, relative paths pointing to media files will be used.'
+complete -c beet -n '__fish_beet_using_command convert' -s a -l album -f -d 'match albums instead of tracks'
+complete -c beet -n '__fish_beet_using_command convert' -s h -l help -f -d 'print help'
 
 
 # ====== completions for  describe =====
@@ -297,6 +325,7 @@ complete -c beet -n '__fish_beet_using_command duplicates' -s h -l help -f -d 'p
 # ====== completions for  embedart =====
 complete -c beet -n '__fish_beet_using_command embedart' -r -s f -l file -f -d 'the image file to embed'
 complete -c beet -n '__fish_beet_using_command embedart' -s y -l yes -f -d 'skip confirmation'
+complete -c beet -n '__fish_beet_using_command embedart' -r -s u -l url -f -d 'the URL of the image file to embed'
 complete -c beet -n '__fish_beet_using_command embedart' -s h -l help -f -d 'print help'
 
 
@@ -323,7 +352,8 @@ complete -c beet -n '__fish_beet_using_command fingerprint' -s h -l help -f -d '
 
 # ====== completions for  fish =====
 complete -c beet -n '__fish_beet_using_command fish' -s f -l noFields -f -d 'omit album/track field completions'
-complete -c beet -n '__fish_beet_using_command fish' -r -s e -l extravalues -f -a 'id path album_id title artist artist_sort artist_credit album albumartist albumartist_sort albumartist_credit genre style discogs_albumid discogs_artistid discogs_labelid lyricist composer composer_sort work mb_workid work_disambig arranger grouping year month day track tracktotal disc disctotal lyrics comments bpm comp mb_trackid mb_albumid mb_artistid mb_albumartistid mb_releasetrackid trackdisambig albumtype albumtypes label acoustid_fingerprint acoustid_id mb_releasegroupid asin isrc catalognum script language country albumstatus media albumdisambig releasegroupdisambig disctitle encoder rg_track_gain rg_track_peak rg_album_gain rg_album_peak r128_track_gain r128_album_gain original_year original_month original_day initial_key length bitrate format samplerate bitdepth channels mtime added singleton filesize id artpath added albumartist albumartist_sort albumartist_credit album genre style discogs_albumid discogs_artistid discogs_labelid year month day disctotal comp mb_albumid mb_albumartistid albumtype albumtypes label mb_releasegroupid asin catalognum script language country albumstatus albumdisambig releasegroupdisambig rg_album_gain rg_album_peak r128_album_gain original_year original_month original_day missing path albumtotal' -d 'include specified field *values* in completions'
+complete -c beet -n '__fish_beet_using_command fish' -r -s e -l extravalues -f -a 'id path album_id title artist artists artists_ids artist_sort artists_sort artist_credit artists_credit remixer album albumartist albumartists albumartist_sort albumartists_sort albumartist_credit albumartists_credit genre style discogs_albumid discogs_artistid discogs_labelid lyricist composer composer_sort work mb_workid work_disambig arranger grouping year month day track tracktotal disc disctotal lyrics comments bpm comp mb_trackid mb_albumid mb_artistid mb_artistids mb_albumartistid mb_albumartistids mb_releasetrackid trackdisambig albumtype albumtypes label barcode acoustid_fingerprint acoustid_id mb_releasegroupid release_group_title asin isrc catalognum script language country albumstatus media albumdisambig releasegroupdisambig disctitle encoder rg_track_gain rg_track_peak rg_album_gain rg_album_peak r128_track_gain r128_album_gain original_year original_month original_day initial_key length bitrate bitrate_mode encoder_info encoder_settings format samplerate bitdepth channels mtime added singleton filesize id artpath added albumartist albumartist_sort albumartist_credit albumartists albumartists_sort albumartists_credit album genre style discogs_albumid discogs_artistid discogs_labelid year month day disctotal comp mb_albumid mb_albumartistid albumtype albumtypes label barcode mb_releasegroupid release_group_title asin catalognum script language country albumstatus albumdisambig releasegroupdisambig rg_album_gain rg_album_peak r128_album_gain original_year original_month original_day missing path albumtotal' -d 'include specified field *values* in completions'
+complete -c beet -n '__fish_beet_using_command fish' -r -s o -l output -f -d 'where to save the script. default: ~/.config/fish/completions'
 complete -c beet -n '__fish_beet_using_command fish' -s h -l help -f -d 'print help'
 
 
@@ -346,17 +376,21 @@ complete -c beet -n '__fish_beet_using_command imp' -s A -l noautotag -f -d "don
 complete -c beet -n '__fish_beet_using_command imp' -s p -l resume -f -d 'resume importing if interrupted'
 complete -c beet -n '__fish_beet_using_command imp' -s P -l noresume -f -d 'do not try to resume importing'
 complete -c beet -n '__fish_beet_using_command imp' -s q -l quiet -f -d 'never prompt for input: skip albums instead'
+complete -c beet -n '__fish_beet_using_command imp' -r -l quiet-fallback -f -d 'decision in quiet mode when no strong match: skip or asis'
 complete -c beet -n '__fish_beet_using_command imp' -r -s l -l log -f -d 'file to log untaggable albums for later review'
 complete -c beet -n '__fish_beet_using_command imp' -s s -l singletons -f -d 'import individual tracks instead of full albums'
 complete -c beet -n '__fish_beet_using_command imp' -s t -l timid -f -d 'always confirm all actions'
 complete -c beet -n '__fish_beet_using_command imp' -s L -l library -f -d 'retag items matching a query'
 complete -c beet -n '__fish_beet_using_command imp' -s i -l incremental -f -d 'skip already-imported directories'
 complete -c beet -n '__fish_beet_using_command imp' -s I -l noincremental -f -d 'do not skip already-imported directories'
+complete -c beet -n '__fish_beet_using_command imp' -s R -l incremental-skip-later -f -d 'do not record skipped files during incremental import'
+complete -c beet -n '__fish_beet_using_command imp' -s r -l noincremental-skip-later -f -d 'record skipped files during incremental import'
 complete -c beet -n '__fish_beet_using_command imp' -l from-scratch -f -d 'erase existing metadata before applying new metadata'
 complete -c beet -n '__fish_beet_using_command imp' -l flat -f -d 'import an entire tree as a single album'
 complete -c beet -n '__fish_beet_using_command imp' -s g -l group-albums -f -d 'group tracks in a folder into separate albums'
 complete -c beet -n '__fish_beet_using_command imp' -l pretend -f -d 'just print the files to import'
 complete -c beet -n '__fish_beet_using_command imp' -r -s S -l search-id -f -d 'restrict matching to a specific metadata backend ID'
+complete -c beet -n '__fish_beet_using_command imp' -r -l from-logfile -f -d 'read skipped paths from an existing logfile'
 complete -c beet -n '__fish_beet_using_command imp' -r -l set -f -d 'set the given fields to the supplied values'
 complete -c beet -n '__fish_beet_using_command imp' -s h -l help -f -d 'print help'
 
@@ -372,17 +406,21 @@ complete -c beet -n '__fish_beet_using_command im' -s A -l noautotag -f -d "don'
 complete -c beet -n '__fish_beet_using_command im' -s p -l resume -f -d 'resume importing if interrupted'
 complete -c beet -n '__fish_beet_using_command im' -s P -l noresume -f -d 'do not try to resume importing'
 complete -c beet -n '__fish_beet_using_command im' -s q -l quiet -f -d 'never prompt for input: skip albums instead'
+complete -c beet -n '__fish_beet_using_command im' -r -l quiet-fallback -f -d 'decision in quiet mode when no strong match: skip or asis'
 complete -c beet -n '__fish_beet_using_command im' -r -s l -l log -f -d 'file to log untaggable albums for later review'
 complete -c beet -n '__fish_beet_using_command im' -s s -l singletons -f -d 'import individual tracks instead of full albums'
 complete -c beet -n '__fish_beet_using_command im' -s t -l timid -f -d 'always confirm all actions'
 complete -c beet -n '__fish_beet_using_command im' -s L -l library -f -d 'retag items matching a query'
 complete -c beet -n '__fish_beet_using_command im' -s i -l incremental -f -d 'skip already-imported directories'
 complete -c beet -n '__fish_beet_using_command im' -s I -l noincremental -f -d 'do not skip already-imported directories'
+complete -c beet -n '__fish_beet_using_command im' -s R -l incremental-skip-later -f -d 'do not record skipped files during incremental import'
+complete -c beet -n '__fish_beet_using_command im' -s r -l noincremental-skip-later -f -d 'record skipped files during incremental import'
 complete -c beet -n '__fish_beet_using_command im' -l from-scratch -f -d 'erase existing metadata before applying new metadata'
 complete -c beet -n '__fish_beet_using_command im' -l flat -f -d 'import an entire tree as a single album'
 complete -c beet -n '__fish_beet_using_command im' -s g -l group-albums -f -d 'group tracks in a folder into separate albums'
 complete -c beet -n '__fish_beet_using_command im' -l pretend -f -d 'just print the files to import'
 complete -c beet -n '__fish_beet_using_command im' -r -s S -l search-id -f -d 'restrict matching to a specific metadata backend ID'
+complete -c beet -n '__fish_beet_using_command im' -r -l from-logfile -f -d 'read skipped paths from an existing logfile'
 complete -c beet -n '__fish_beet_using_command im' -r -l set -f -d 'set the given fields to the supplied values'
 complete -c beet -n '__fish_beet_using_command im' -s h -l help -f -d 'print help'
 
@@ -398,17 +436,21 @@ complete -c beet -n '__fish_beet_using_command import' -s A -l noautotag -f -d "
 complete -c beet -n '__fish_beet_using_command import' -s p -l resume -f -d 'resume importing if interrupted'
 complete -c beet -n '__fish_beet_using_command import' -s P -l noresume -f -d 'do not try to resume importing'
 complete -c beet -n '__fish_beet_using_command import' -s q -l quiet -f -d 'never prompt for input: skip albums instead'
+complete -c beet -n '__fish_beet_using_command import' -r -l quiet-fallback -f -d 'decision in quiet mode when no strong match: skip or asis'
 complete -c beet -n '__fish_beet_using_command import' -r -s l -l log -f -d 'file to log untaggable albums for later review'
 complete -c beet -n '__fish_beet_using_command import' -s s -l singletons -f -d 'import individual tracks instead of full albums'
 complete -c beet -n '__fish_beet_using_command import' -s t -l timid -f -d 'always confirm all actions'
 complete -c beet -n '__fish_beet_using_command import' -s L -l library -f -d 'retag items matching a query'
 complete -c beet -n '__fish_beet_using_command import' -s i -l incremental -f -d 'skip already-imported directories'
 complete -c beet -n '__fish_beet_using_command import' -s I -l noincremental -f -d 'do not skip already-imported directories'
+complete -c beet -n '__fish_beet_using_command import' -s R -l incremental-skip-later -f -d 'do not record skipped files during incremental import'
+complete -c beet -n '__fish_beet_using_command import' -s r -l noincremental-skip-later -f -d 'record skipped files during incremental import'
 complete -c beet -n '__fish_beet_using_command import' -l from-scratch -f -d 'erase existing metadata before applying new metadata'
 complete -c beet -n '__fish_beet_using_command import' -l flat -f -d 'import an entire tree as a single album'
 complete -c beet -n '__fish_beet_using_command import' -s g -l group-albums -f -d 'group tracks in a folder into separate albums'
 complete -c beet -n '__fish_beet_using_command import' -l pretend -f -d 'just print the files to import'
 complete -c beet -n '__fish_beet_using_command import' -r -s S -l search-id -f -d 'restrict matching to a specific metadata backend ID'
+complete -c beet -n '__fish_beet_using_command import' -r -l from-logfile -f -d 'read skipped paths from an existing logfile'
 complete -c beet -n '__fish_beet_using_command import' -r -l set -f -d 'set the given fields to the supplied values'
 complete -c beet -n '__fish_beet_using_command import' -s h -l help -f -d 'print help'
 
@@ -445,6 +487,15 @@ complete -c beet -n '__fish_beet_using_command list' -r -s f -l format -f -d 'pr
 complete -c beet -n '__fish_beet_using_command list' -s h -l help -f -d 'print help'
 
 
+# ====== completions for  mbsync =====
+complete -c beet -n '__fish_beet_using_command mbsync' -s p -l pretend -f -d 'show all changes but do nothing'
+complete -c beet -n '__fish_beet_using_command mbsync' -s m -l move -f -d 'move files in the library directory'
+complete -c beet -n '__fish_beet_using_command mbsync' -s M -l nomove -f -d "don't move files in library"
+complete -c beet -n '__fish_beet_using_command mbsync' -s W -l nowrite -f -d "don't write updated metadata to files"
+complete -c beet -n '__fish_beet_using_command mbsync' -r -s f -l format -f -d 'print with custom format'
+complete -c beet -n '__fish_beet_using_command mbsync' -s h -l help -f -d 'print help'
+
+
 # ====== completions for  miss =====
 complete -c beet -n '__fish_beet_using_command miss' -s c -l count -f -d 'count missing tracks per album'
 complete -c beet -n '__fish_beet_using_command miss' -s t -l total -f -d 'count total of missing tracks'
@@ -469,6 +520,7 @@ complete -c beet -n '__fish_beet_using_command mod' -s W -l nowrite -f -d "don't
 complete -c beet -n '__fish_beet_using_command mod' -s a -l album -f -d 'match albums instead of tracks'
 complete -c beet -n '__fish_beet_using_command mod' -r -s f -l format -f -d 'print with custom format'
 complete -c beet -n '__fish_beet_using_command mod' -s y -l yes -f -d 'skip confirmation'
+complete -c beet -n '__fish_beet_using_command mod' -s I -l noinherit -f -d "when modifying albums, don't also change item data"
 complete -c beet -n '__fish_beet_using_command mod' -s h -l help -f -d 'print help'
 
 
@@ -480,6 +532,7 @@ complete -c beet -n '__fish_beet_using_command modify' -s W -l nowrite -f -d "do
 complete -c beet -n '__fish_beet_using_command modify' -s a -l album -f -d 'match albums instead of tracks'
 complete -c beet -n '__fish_beet_using_command modify' -r -s f -l format -f -d 'print with custom format'
 complete -c beet -n '__fish_beet_using_command modify' -s y -l yes -f -d 'skip confirmation'
+complete -c beet -n '__fish_beet_using_command modify' -s I -l noinherit -f -d "when modifying albums, don't also change item data"
 complete -c beet -n '__fish_beet_using_command modify' -s h -l help -f -d 'print help'
 
 
@@ -553,6 +606,10 @@ complete -c beet -n '__fish_beet_using_command thumbnails' -l dolphin -f -d 'cre
 complete -c beet -n '__fish_beet_using_command thumbnails' -s h -l help -f -d 'print help'
 
 
+# ====== completions for  unimported =====
+complete -c beet -n '__fish_beet_using_command unimported' -s h -l help -f -d 'print help'
+
+
 # ====== completions for  upd =====
 complete -c beet -n '__fish_beet_using_command upd' -s a -l album -f -d 'match albums instead of tracks'
 complete -c beet -n '__fish_beet_using_command upd' -r -s f -l format -f -d 'print with custom format'
@@ -560,6 +617,7 @@ complete -c beet -n '__fish_beet_using_command upd' -s m -l move -f -d 'move fil
 complete -c beet -n '__fish_beet_using_command upd' -s M -l nomove -f -d "don't move files in library"
 complete -c beet -n '__fish_beet_using_command upd' -s p -l pretend -f -d 'show all changes but do nothing'
 complete -c beet -n '__fish_beet_using_command upd' -r -s F -l field -f -d 'list of fields to update'
+complete -c beet -n '__fish_beet_using_command upd' -r -s e -l exclude-field -f -d 'list of fields to exclude from updates'
 complete -c beet -n '__fish_beet_using_command upd' -s h -l help -f -d 'print help'
 
 
@@ -570,6 +628,7 @@ complete -c beet -n '__fish_beet_using_command up' -s m -l move -f -d 'move file
 complete -c beet -n '__fish_beet_using_command up' -s M -l nomove -f -d "don't move files in library"
 complete -c beet -n '__fish_beet_using_command up' -s p -l pretend -f -d 'show all changes but do nothing'
 complete -c beet -n '__fish_beet_using_command up' -r -s F -l field -f -d 'list of fields to update'
+complete -c beet -n '__fish_beet_using_command up' -r -s e -l exclude-field -f -d 'list of fields to exclude from updates'
 complete -c beet -n '__fish_beet_using_command up' -s h -l help -f -d 'print help'
 
 
@@ -580,6 +639,7 @@ complete -c beet -n '__fish_beet_using_command update' -s m -l move -f -d 'move 
 complete -c beet -n '__fish_beet_using_command update' -s M -l nomove -f -d "don't move files in library"
 complete -c beet -n '__fish_beet_using_command update' -s p -l pretend -f -d 'show all changes but do nothing'
 complete -c beet -n '__fish_beet_using_command update' -r -s F -l field -f -d 'list of fields to update'
+complete -c beet -n '__fish_beet_using_command update' -r -s e -l exclude-field -f -d 'list of fields to exclude from updates'
 complete -c beet -n '__fish_beet_using_command update' -s h -l help -f -d 'print help'
 
 
@@ -594,6 +654,6 @@ complete -c beet -n '__fish_beet_using_command write' -s h -l help -f -d 'print 
 
 
 # ====== completions for  yearfixer =====
-complete -c beet -n '__fish_beet_using_command yearfixer' -s f -l force -f -d '[default: False] force analysis of items with non-zero bpm values'
+complete -c beet -n '__fish_beet_using_command yearfixer' -s f -l force -f -d '[default: False] force analysis of items with non-zero original_year values'
 complete -c beet -n '__fish_beet_using_command yearfixer' -s v -l version -f -d 'show plugin version'
 complete -c beet -n '__fish_beet_using_command yearfixer' -s h -l help -f -d 'print help'

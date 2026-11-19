@@ -14,11 +14,25 @@ pluginpath:
   - /home/georg/git/BeetsPluginAutofix/beetsplug
   - /home/georg/git/BeetsPluginDescribe/beetsplug
 
-plugins: fromfilename chroma acousticbrainz embedart fetchart replaygain scrub fish thumbnails fuzzy permissions lastgenre duplicates missing info summarize bpd autofix yearfixer describe
+plugins: fromfilename chroma embedart fetchart replaygain scrub fish thumbnails fuzzy permissions lastgenre duplicates missing info summarize bpd autofix yearfixer describe convert mbsync bareasc unimported
 
 replaygain:
   backend: ffmpeg
 
 thumbnails:
   dolphin: yes
+
+convert:
+  copy_album_art: yes
+  auto: no
+  format: flac
+  delete_originals: no
+
+unimported:
+  ignore_extensions: directory db db-shm db-wal log md
+
+fetchart:
+  cover_format: JPEG
+  max_filesize: 6000000
+  quality: 75
 
