@@ -48,3 +48,8 @@
 	defaultKeyCommand = ssh-add -L
 [rerere]
 	enabled = true
+[gitbutler]
+	aiModelProvider = anthropic
+	aiAnthropicKeyOption = bringYourOwn
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
